@@ -1,0 +1,13 @@
+CC=g++ -g -O3
+CFLAGS= -c -Wall `pkg-config gtkmm-3.0 --cflags` 
+LDFLAGS= `pkg-config gtkmm-3.0 --libs`
+SOURCES=atpp.cc commands.cc file.cc filebuffer.cc main.cc window.cc
+OBJECTS=$(SOURCES:.cc=.o)
+EXECUTABLE=atEditLin
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cc.o:
+	$(CC) $(CFLAGS) $< -o $@

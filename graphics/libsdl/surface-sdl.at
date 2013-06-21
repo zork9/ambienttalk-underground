@@ -1,0 +1,39 @@
+/*
+Copyright (C) 2013 Johan Ceuppens
+
+This program is free software; you can redistribute it and/or modify it unde    r the terms of the GNU General Public License as published by the Free Softw    are Foundation; either version 2 of the License, or (at your option) any lat    er version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNES    S FOR A PARTICULAR PURPOSE. See the GNU General Public License for more deta    ils.
+
+You should have received a copy of the GNU General Public License along with     this program; if not, write to the Free Software Foundation, Inc., 59 Templ    e Place, Suite 330, Boston, MA 02111-1307 USA
+*/
+////////////////////////////////////////////////////////////////////////////////
+// This screen surface code needs atoost, 
+// see https://soft.vub.ac.be/svn-gen/ambienttalk-underground/atoost
+////////////////////////////////////////////////////////////////////////////////
+
+
+def surfaceSDL := object: {
+	def Caretaker := Caretaker.new();
+	def x := -1;
+	def y := -1;
+	def w := -1;
+	def h := -1;
+
+	def image := BufferedImage.new();
+	
+	def init(xx,yy,ww,hh) { x := xx; y := yy; w := ww; h := hh; };
+	def init(xx,yy,ww,hh,bufimg) { x := xx; y := yy; w := ww; h := hh; image := bufimg; };
+
+	def render(base) { 
+		def drawMethodR := drawMethod: {
+			def img;
+			def x := -1;
+			def y := -1;
+			def init(xx,yy,i) { img := i y := yy; x := xx };
+			def draw(gfxdev) { gfxdev.drawImage(img,0,x,y) }
+		}
+		def dm := drawMethodR.new(x,y,image);
+		base.drawOn(image); };
+};	
+

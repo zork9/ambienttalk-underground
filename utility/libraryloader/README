@@ -1,0 +1,7 @@
+This code is licensed under the MIT and GPL version 2 license.
+
+It is a directory files loader for ambienttalk/2
+
+run iat -o lib=/home/bubble/ambienttalk/ambienttalk-underground
+
+Ambienttalk can be found at http://soft.vub.ac.be/amop/

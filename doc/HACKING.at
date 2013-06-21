@@ -1,0 +1,4 @@
+. Put Perl features in ambienttalk
+. mailbox of at is permutable
+. use non-futures (for future persistency) which can later be extended to futures if someone wants this
+. documentation system for at e.g. perldoc, javadoc, man pages, see atdoc/ directory above.

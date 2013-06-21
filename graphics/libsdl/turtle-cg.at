@@ -1,0 +1,33 @@
+/*
+Copyright (C) 2013 Johan Ceuppens
+
+This program is free software; you can redistribute it and/or modify it unde    r the terms of the GNU General Public License as published by the Free Softw    are Foundation; either version 2 of the License, or (at your option) any lat    er version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNES    S FOR A PARTICULAR PURPOSE. See the GNU General Public License for more deta    ils.
+
+You should have received a copy of the GNU General Public License along with     this program; if not, write to the Free Software Foundation, Inc., 59 Templ    e Place, Suite 330, Boston, MA 02111-1307 USA
+*/
+////////////////////////////////////////////////////////////////////////////////
+// This screen surface code needs atoost, 
+// see https://soft.vub.ac.be/svn-gen/ambienttalk-underground/atoost
+////////////////////////////////////////////////////////////////////////////////
+
+
+def turtleCG := object: {
+	x := -1;
+	y := -1;
+	def init(xx,yy) { x := xx; y := yy };
+
+	def lineto(xx,yy,surf) { surf.put(xx,yy); /* insert Bresenham algorithm */ };
+	def moveto(xx,yy) { x := xx; y := yy };
+};
+
+//memento
+def turtleCGM := turtleCG: {
+	def op;
+
+	def init(m) { op := m.new(); };
+
+	def undo() { op.unroll(); };
+	def redo() { op.reroll(); };
+};

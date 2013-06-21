@@ -1,0 +1,53 @@
+/*
+Copyright (C) 2013 Johan Ceuppens
+
+This program is free software; you can redistribute it and/or modify it unde    r the terms of the GNU General Public License as published by the Free Softw    are Foundation; either version 2 of the License, or (at your option) any lat    er version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNES    S FOR A PARTICULAR PURPOSE. See the GNU General Public License for more deta    ils.
+
+You should have received a copy of the GNU General Public License along with     this program; if not, write to the Free Software Foundation, Inc., 59 Templ    e Place, Suite 330, Boston, MA 02111-1307 USA
+*/
+//use iat -o lib=/home/foo/ambienttalk/ambienttalk-underground
+object: { // bufferedimage namespace
+def Bufferedimage := jlobby.java.awt.image.BufferedImage;
+def image := jlobby.java.awt.image.Image;
+def io := jlobby.java.nio.ImageIO;
+def file := jlobby.java.io.File;
+def inputstream := jlobby.java.io.InputStream;
+def baos := jlobby.java.io.ByteArrayOutputStream;
+
+def bufferedimage := object: {
+
+def makebufimage(width, height, type) {
+	Bufferedimage.new(wdith,height,type);
+};
+
+def tobytearray(dimg, suffix) {
+try: {
+	baos.new();
+	io.write(dimg, suffix, baos);
+	baos.flush();
+	bb = [baos.toByteArray()];
+	baos.close();
+} catch: Exception using: { |e| system.println(e.message) }
+};
+
+def tobufferedimage(bytes) {
+	in := inputstream.new(bytes);
+	bufferedimage := io.read(in);
+	bufferedimage
+};
+
+def load(filename) {
+	Bufferedimage dimg := io.read(file.new(filename));
+	scalex := dimg.getWidth() * 1.0;
+	scalex := dimg.getHeight() * 1.0;
+	image img = dimg.getScaledInstance(scalex, scaley, image.SCALE_SMOOTH);
+	return (bufferedimage) img;//FIX ambi cast
+};
+
+def writeimage(bufimage, suffix, filename) {
+	io.write(bufimage, suffix, file.new(filename));
+};
+
+};//bufferedimage namespace
