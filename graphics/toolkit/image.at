@@ -15,7 +15,6 @@ def Toolkit := jlobby.java.awt.Toolkit;
 def atoostModule := lobby.lib.utility.atoost;
 
 def image := object: {
-	//NOTE that there is no C++ sequence of initialisation e.g. O : _OBase(), _OBase2()
 	def pathconf := atoostModule.pathhash.new("./pics");
 	def img := nil;
 
