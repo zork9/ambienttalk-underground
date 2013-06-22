@@ -1,9 +1,0 @@
-This code is licensed under the MIT and GPL version 2 license.
-
-It is a OpenGL library project for ambienttalk/2. It is meant for Quark Gluon
-Plasma screens. See paper. 
-It needs atoost, see http://soft.vub.ac.be/svn-gen/ambienttalk-underground/atoost/
-
-use 'iat -o lib=/<your directory>/ambienttalk-underground' to run
-
-Ambienttalk can be found at http://soft.vub.ac.be/amop/

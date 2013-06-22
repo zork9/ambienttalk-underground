@@ -1,8 +1,0 @@
-
-This is an editor for the ambienttalk language on Linux.
-
-Needs libpcrecpp0 package and header files (pcrecpp.h)
-
-To install on ubuntu, use one of the Makefiles (pkgconfig or not.)
-
-
